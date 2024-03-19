@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,800;1,600&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../IMG/cesped.jpg');
+    background-size: cover; /* Hace que la imagen cubra todo el área */
+}
+
+
+.login {
+    position: relative;
+    width: 380px;
+    padding: 80px 50px 50px;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.1),
+    -15px -15px 20px #fffb;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+}
+
+.login form {
+    position: relative;
+    width: 100%;
+}
+
+.login form h2 {
+    font-size: 2em;
+    margin-bottom: 30px;  
+    line-height: 0.9em;  
+}
+
+.login form h2 span {
+    font-weight: 300;
+    font-size: 0.65em;
+}
+
+.login form .inputbox{
+    position: relative;
+    display: flex;
+}
+
+.login form .inputbox input {
+    border: none;
+    outline: none;
+    background: transparent;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.login form .inputbox input[type="text"],
+.login form .inputbox input[type="email"],
+.login form .inputbox input[type="password"] {
+    width: 100%;
+    padding: 15px 20px;
+    padding-left: 40px;
+    margin-bottom: 20px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 10px #f2fee7;
+}
+
+.login form .inputbox i {
+    position: absolute;
+    left: 20px;
+    top: 25%;
+}
+
+.login form .inputbox input[type="submit"] {
+    margin-top: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px #f2fee7;
+    width: 100%;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.login form .inputbox input[type="submit"]:focus {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px #f2fee7;
+}
+
+.login .huella {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    cursor: pointer;
+    
+}
+
+.login .huella .huellacaja {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px #f2fee7;
+    border: 2.5px solid #edf1f4;
+    padding: 15px 20px 10px;
+    border-radius: 10px;
+    background: linear-gradient(315deg,rgb(84, 224, 74),rgb(17, 255, 0));
+}
+
+.login .huella .huellacaja img {
+    max-width: 40px;
+    filter: invert(1);
+    animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+    0%, 100%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.login .huella p {
+    font-weight: 500;
+    font-size: 1em;
+    
+}
+
+.login .error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
