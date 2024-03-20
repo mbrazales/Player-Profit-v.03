@@ -7,22 +7,20 @@ session_start();
 
 include "Config/conexion.php";
 
-if (!empty($_SESSION['email']) && !empty($_SESSION['pass'])) {
-
-    // Si hay una sesión activa, mostrar la bienvenida y el nombre de usuario y el email, realmente es para un control de las sesiones
-    if (isset($_SESSION['nombre_usuario'])) {
-        
-        $nombreUsuario = $_SESSION['nombre_usuario'];
-        $email = $_SESSION['email'];
-        
-    } else {
-        // de lo contrario mensaje de Bienvenido sin mas, aunque si nos muestra este mensaje algo está mal
-        echo '<div><p>¡Bienvenido!, pero tenemos un error en algún lado</p></div>';
-    }
+if (!empty($_SESSION['email']) && !empty($_SESSION['pass']) && isset($_SESSION['nombre_usuario']) && isset($_SESSION['idPermisos'])) {
+    $nombreUsuario = $_SESSION['nombre_usuario'];
+    $email = $_SESSION['email'];
+    $idPermisos = $_SESSION['idPermisos']; 
 } else {
-    // Si no hay sesión activa, redirigir a la página de inicio de sesión
-    header('location:login.php');
+    // Si no hay sesión activa o falta algún dato necesario en la sesión,
+    // muestra un mensaje de error
+    echo '<div><p>¡Bienvenido!, pero tenemos un error en algún lado</p></div>';
+    // Luego, redirige a la página de inicio de sesión
+    header('location: login.php');
+    exit(); // Asegura que el script termine después de redirigir
 }
+
+// Después de esto, puedes seguir con el resto de tu lógica, como verificar si el usuario ha iniciado sesión
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     // El usuario ha iniciado sesión
     //echo 'El usuario ha iniciado sesión.';
@@ -30,6 +28,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     // El usuario no ha iniciado sesión
     echo 'El usuario no ha iniciado sesión.';
 }
+
 
 
 
@@ -121,9 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="nav-link" href="Vistas/Vista_ObrasMaestras.php">VIDEOS</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="Vistas/Vista_Gestion.php">GESTIÓN</a>
-                    </li>
+                    <?php
+                        if ($idPermisos == 1) {
+                        // Si $idPermisos es igual a 1, muestra el enlace
+                        echo '<li class="nav-item"><a class="nav-link" href="Vistas/Vista_Gestion.php">GESTIÓN</a></li>';
+                        }
+                    ?>
                     
                 </ul>
 
@@ -134,7 +136,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                     <li class="nav-item dropstart">
                         <a class="nav-link dropdown-toggle" style="font-size: 1.2rem;" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo '<div><p> ' . $nombreUsuario . '</p></div>'; ?>
+                            <?php echo '<div><p> ' . $nombreUsuario .'</p></div>'; ?>
+
                         </a>
                         <ul class="dropdown-menu transparent-bg">
                             <form method="post">

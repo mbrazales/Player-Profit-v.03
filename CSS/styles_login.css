@@ -63,14 +63,39 @@ body {
 
 .login form .inputbox input[type="text"],
 .login form .inputbox input[type="email"],
-.login form .inputbox input[type="password"] {
+.login form .inputbox input[type="password"],
+.login form .inputbox select {
     width: 100%;
     padding: 15px 20px;
     padding-left: 40px;
     margin-bottom: 20px;
     box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
     inset -5px -5px 10px #f2fee7;
+    border-radius: 10px;
+    font-size: 1em;
+    background: transparent;
+    border: none;
+    outline: none;
 }
+
+.login form .inputbox select {
+    appearance: none; /* Para quitar el estilo por defecto del selector */
+}
+
+#rol {
+    width: 100%;
+    padding: 15px 20px;
+    padding-left: 40px;
+    margin-bottom: 20px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 10px #f2fee7;
+    border-radius: 10px;
+    font-size: 1em;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
 
 .login form .inputbox i {
     position: absolute;
@@ -109,10 +134,44 @@ body {
     border: 2.5px solid #edf1f4;
     padding: 15px 20px 10px;
     border-radius: 10px;
-    background: linear-gradient(315deg,rgb(84, 224, 74),rgb(17, 255, 0));
+    background-image: url('../IMG/fingerPrint_01.png');
+    background-size: contain; /* Ajustar el tamaño de la imagen para que quepa dentro del contenedor */
+    background-position: center; /* Centrar la imagen dentro del contenedor */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+    position: relative;
+    width: 80px;
+    height: 110px;
 }
 
-.login .huella .huellacaja img {
+
+.login .huella .huellacaja::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-image: url('../IMG/fingerPrint_02.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-image: url('../IMG/fingerPrint_02.png'); /* Start with the second image */
+    }
+    50% {
+        background-image: url('../IMG/fingerPrint_01.png'); /* Transition to the first image */
+    }
+    100% {
+        background-image: url('../IMG/fingerPrint_02.png'); /* End with the second image */
+    }
+}
+
+/*.login .huella .huellacaja img {
     max-width: 40px;
     filter: invert(1);
     animation: animate 1s linear infinite;
@@ -125,7 +184,7 @@ body {
     100% {
         opacity: 0.5;
     }
-}
+}*/
 
 .login .huella p {
     font-weight: 500;

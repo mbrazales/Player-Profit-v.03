@@ -21,7 +21,6 @@
 
             <a class="navbar-brand greeen" href="../index.php">
                 <i class="bi bi-suit-spade-fill">PLAYER PROFIT</i>
-                
             </a>
 
             <!-- boton del menu -->
@@ -54,10 +53,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../Vistas/Vista_ObrasMaestras.php">VIDEOS</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Vistas/Vista_Gestion.php">GESTIÓN</a>
-                    </li>
+                    
+                    
                     
                 </ul>
 
@@ -65,6 +62,7 @@
                 <!-- enlaces redes sociales PARA UN FUTURO Y SEGUIR ESCALANDO EN EL PROYECTO-->
 
                 <ul class="navbar-nav  flex-row flex-wrap">
+                
                 
                     <li class="nav-item dropstart">
                         <a class="nav-link dropdown-toggle" style="font-size: 1.2rem;" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -137,6 +135,7 @@
 </header>
 
 <body>
+    
 <?php
     // Incluye el archivo de conexión a la base de datos mediante PDO
     include '../Config/conexionPDO.php';
@@ -230,6 +229,7 @@ if (isset($_COOKIE['favoritos'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <?php 
+    
     include '../Layout/footer.php'; 
     ?>
 </body>

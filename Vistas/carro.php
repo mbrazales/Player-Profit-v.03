@@ -133,9 +133,12 @@
                         <a class="nav-link" href="../Vistas/Vista_ObrasMaestras.php">VIDEOS</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Vistas/Vista_Gestion.php">GESTIÓN</a>
-                    </li>
+                    <?php
+                        if ($idPermisos == 1) {
+                        // Si $idPermisos es igual a 1, muestra el enlace
+                        echo '<li class="nav-item"><a class="nav-link" href="Vistas/Vista_Gestion.php">GESTIÓN</a></li>';
+                        }
+                    ?>
                     
                 </ul>
 

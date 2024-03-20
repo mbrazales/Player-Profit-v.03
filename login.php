@@ -15,6 +15,11 @@ if (!isset($_SESSION['pass'])) {
 if (!isset($_SESSION['nombre_usuario'])) {
     $_SESSION['nombre_usuario'] = null;
 }
+if (!isset($_SESSION['idPermisos'])) {
+    $_SESSION['idPermisos'] = null;
+}
+
+
 // Lógica para iniciar sesión, por ejemplo, después de que el usuario haya ingresado las credenciales correctamente.
 $_SESSION['loggedin'] = true;
 
@@ -54,13 +59,22 @@ $_SESSION['loggedin'] = true;
                 </div>
 
                 <div class="inputbox">
-                    <input type="submit" name="submit" value="INICIAR">
+                    <select name="idPermisos" id="rol" required>
+                        <option value="">Selecciona tu rol</option>
+                        <option value="1">ADMINISTRADOR</option>
+                        <option value="2">USUARIO</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>
+                </div>
+
+                <div class="inputbox">
+                    <input type="submit" name="enviar" value="INICIAR">
                 </div>
         </form>
         <h4>O puedes ser auténtico</h4>
         <div class="huella">
             <div class="huellacaja">
-                <img src="IMG/huella.png" alt="huella">
+                
             </div>
             <p>Iniciar con huella</p>
         </div>
@@ -70,7 +84,7 @@ $_SESSION['loggedin'] = true;
         <div class="error">
             <?php
             // Si se han producido errores durante el inicio de sesión, imprime los mensajes de error.
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['enviar'])) {
                 if (!empty($email) && !empty($pass)) {
                     if (!$datos_validos) {
                         echo '<p>¡El usuario o la contraseña no son válidos!</p>';
@@ -96,12 +110,13 @@ $conexion = conexion();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //Verifica si se ha enviado un formulario mediante el método POST y si existe un campo llamado 'submit'
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['enviar'])) {
 
         //Si se cumple esta condición, el código continúa obteniendo los valores enviados a través del formulario para las variables $email, $pass y $nombre_usuario.
         $email = $_POST['email'];
         $pass = $_POST['pass'];
         $nombre_usuario = $_POST['nombre_usuario'];
+        $idPermisos = $_POST['idPermisos'];
 
         //Valido si los campos de email y password están vacíos
         if (!empty($email) && !empty($pass)) {
@@ -120,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['email'] = $email;
                 $_SESSION['pass'] = $pass;
                 $_SESSION['nombre_usuario'] = $nombre_usuario;
+                $_SESSION['idPermisos'] = $idPermisos;
 
                 header('location:index.php');
             } else {

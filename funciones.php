@@ -79,18 +79,19 @@ function buscar_usuario($conexion, $usuario)
 
 //Función para registrar nuevo usuario a la BD usuarios. 
 //Toma por parámetro la conexión, el email y la contraseña previamente validados
-function crear_usuario($conexion, $email, $contrasenia, $nombre_usuario)
+function crear_usuario($conexion, $email, $contrasenia, $nombre_usuario, $idPermisos)
 {
 
     try {
         //1. Prepara la consulta
-        $sql = 'INSERT INTO usuarios(email, contrasenia, nombre_usuario) VALUES (:email,:pass,:nombre_usuario);';
+        $sql = 'INSERT INTO usuarios(email, contrasenia, nombre_usuario,idPermisos) VALUES (:email,:pass,:nombre_usuario,:idPermisos);';
         $consulta = $conexion->prepare($sql);
 
         //2. Une los parámetros
         $consulta->bindParam(':email', $email);
         $consulta->bindParam(':pass', $contrasenia);
         $consulta->bindParam(':nombre_usuario', $nombre_usuario);
+        $consulta->bindParam(':idPermisos', $idPermisos);
 
         //3. Ejecuta la consulta
         $consulta->execute();
@@ -152,3 +153,5 @@ function coincidenContrasenias($contrasenia, $contraseniaBD)
 {
     return password_verify($contrasenia, $contraseniaBD);
 }
+
+

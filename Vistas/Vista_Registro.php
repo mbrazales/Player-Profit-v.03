@@ -112,10 +112,11 @@ $error_pass = '<div>
                                 $contrasenias_iguales = comparar_contrasenias($pass1, $pass2);
                                 if ($contrasenia_valida && $contrasenias_iguales) {
                                     $hash_contrasenia = hashContrasenia($pass1);
-                                    crear_usuario($conexion, $email, $hash_contrasenia, $nombreUsuario);
+                                    crear_usuario($conexion, $email, $hash_contrasenia, $nombreUsuario, $idPermisos = 2);
                                     $_SESSION['email'] = $email;
                                     $_SESSION['pass'] = $hash_contrasenia;
                                     $_SESSION['nombre_usuario'] = $nombreUsuario;
+                                    $_SESSION['idPermisos'] = $idPermisos;
                                     header('location:../index.php');
                                 } elseif (!$contrasenia_valida) {
                                     echo $error_pass;

@@ -134,10 +134,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../Vistas/Vista_ObrasMaestras.php">VIDEOS</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Vistas/Vista_Gestion.php">GESTIÓN</a>
-                    </li>
                     
                 </ul>
 
