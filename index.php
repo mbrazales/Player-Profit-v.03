@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="Vistas/Vista_Favoritos.php">FAVORITOS</a>
+                        <a class="nav-link" href="Vistas/Vista_Favoritos.php">CESTA</a>
                     </li>
 
                     <li class="nav-item">
@@ -184,6 +184,103 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 line-height: 2rem; /* Alinea verticalmente el número dentro del círculo */
                                 border-radius: 50%; /* Asegura que el círculo tenga bordes redondeados */
                             }
+                            /**** index fotos portada****/
+
+.wrapperr {
+    width: 100%;
+    height: calc(100vh - 20px); /* Ajustado para tener en cuenta el padding */
+    display: flex;
+    align-items: flex-start; /* Cambiado de center a flex-start */
+    justify-content: center;
+    padding-top: 100px; /* Añadido para separar desde arriba */
+}
+
+
+.containerr {
+    height: 400px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+
+.cardd {
+    width: 80px;
+    border-radius: .75rem;
+    background-size: cover;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+    transition: .6s cubic-bezier(.28,-0.03,0,.99);
+    box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
+}
+
+.cardd > .row {
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.cardd > .row > .icon {
+    background: #223;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.cardd > .row > .description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 80px;
+    width: 520px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition-delay: .3s;
+    transition: all .3s ease;
+}
+
+.descriptionn p {
+    color: white;
+    padding-top: 5px;
+}
+
+.descriptionn h4 {
+    text-transform: uppercase;
+}
+
+input {
+    display: none;
+}
+
+input:checked + label {
+    width: 600px;
+}
+
+input:checked + label .description {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.cardd[for="c1"] {
+    background-image: url('IMG/totys.png');
+}
+.cardd[for="c2"] {
+    background-image: url('IMG/dinero.png');
+}
+.cardd[for="c3"] {
+    background-image: url('IMG/mercador.png');
+}
+.cardd[for="c4"] {
+    background-image: url('IMG/rapidos.png');
+}
                         </style>
 
                         <!-- Código HTML con el círculo rojo y el número -->
@@ -208,10 +305,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </header>
 
 <body>
-    <hr>
-    <h2 align="center">COMPRA LAS MEJORES CARTAS</h2>
-    <hr>
-
+    
+    <div class="wrapperr">
+        <div class="containerr">
+            <input type="radio" name="slide" id="c1" checked>
+            <label for="c1" class="cardd">
+                <div class="row">
+                    <div class="icon">1</div>
+                    <div class="description">
+                        <h4>JUGADORES</h4>
+                        <p>Tenemos los mejores Jugadores del mercado</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c2" >
+            <label for="c2" class="cardd">
+                <div class="row">
+                    <div class="icon">2</div>
+                    <div class="descriptionn">
+                        <h4>PRECIOS</h4>
+                        <p>Los Precios más competitivos del sector</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c3" >
+            <label for="c3" class="cardd">
+                <div class="row">
+                    <div class="icon">3</div>
+                    <div class="descriptionn">
+                        <h4>Sin intermediarios</h4>
+                        <p>Somos vendedores directos</p>
+                    </div>
+                </div>
+            </label>
+            <input type="radio" name="slide" id="c4" >
+            <label for="c4" class="cardd">
+                <div class="row">
+                    <div class="icon">4</div>
+                    <div class="descriptionn">
+                        <h4>RÁPIDOS Y FIABLES</h4>
+                        <p>Operación al instante Y con la máxima transparencia</p>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

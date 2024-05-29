@@ -50,7 +50,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../Vistas/Vista_Favoritos.php">FAVORITOS</a>
+                        <a class="nav-link" href="../Vistas/Vista_Favoritos.php">CESTA</a>
                     </li>
 
                     <li class="nav-item">
@@ -59,6 +59,10 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="../Vistas/Vista_ObrasMaestras.php">VIDEOS</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Vistas/Vista_Gestion.php">GESTIÓN</a>
                     </li>
                     
                 </ul>
@@ -144,7 +148,7 @@
       <body>
           <div>
             <hr>
-            <h4 align="center">GALERIA</h4>
+            <h4 align="center">ESPECIALES</h4>
             <hr>
           </div>
                 <div id="contenedorSemana"  class="container-fluid row justify-content-center">

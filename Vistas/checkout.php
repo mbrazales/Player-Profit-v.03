@@ -23,8 +23,8 @@ $checkout_session = \Stripe\Checkout\Session::create([
         'quantity' => 1,
     ]],
     'mode' => 'payment',
-    'success_url' => 'http://localhost/prueba25/Vistas/Vista_GraciasxComprar.php',
-    'cancel_url' => 'http://localhost/prueba25/Vistas/Vista_ErrorxComprar.php',
+    'success_url' => 'http://localhost/Player-Profit-v.02/Vistas/Vista_GraciasxComprar.php',
+    'cancel_url' => 'http://localhost/Player-Profit-v.02/Vistas/Vista_GraciasxComprar.php',
 ]);
 
 http_response_code(400);

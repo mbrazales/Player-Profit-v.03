@@ -43,7 +43,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../Vistas/Vista_Favoritos.php">FAVORITOS</a>
+                        <a class="nav-link active" href="../Vistas/Vista_Favoritos.php">CESTA</a>
                     </li>
 
                     <li class="nav-item">
@@ -54,7 +54,9 @@
                         <a class="nav-link" href="../Vistas/Vista_ObrasMaestras.php">VIDEOS</a>
                     </li>
                     
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Vistas/Vista_Gestion.php">GESTIÓN</a>
+                    </li>
                     
                 </ul>
 
@@ -180,37 +182,39 @@ if (isset($_COOKIE['favoritos'])) {
             if ($jugadores_favoritos) {
                 
                 // Mostrar la información de los jugadores favoritos
-                echo "<h1>Jugadores Favoritos</h1>";
-                echo "<table class='table'>";
-                echo "<thead>
+                echo '<h3>CESTA DE JUGADORES</h3>';
+                echo '<table class="table">';
+                echo '<thead>
                         <tr>
-                            <th scope='col'>JUGADOR</th>
+                            <th scope="col" style="color: green;">JUGADOR</th>
                         </tr>
-                    </thead>";
-                echo "<tbody>";
+                    </thead>';
+                echo '<tbody>';
+
 
                 foreach ($jugadores_favoritos as $jugador) {
 
                     // Mostrar la información de cada jugador
                     echo "<tr>";
                     echo "<td><img width='150' height='200' src='data:image/jpg;base64," . base64_encode($jugador['imagen']) . "' alt=''></td>"; // Mostrar la imagen del jugador
-                    echo "<td>" . $jugador['nombre'] . "</td>"; // Mostrar el nombre del jugador
+                    echo '<td style="color: green;">' . $jugador['nombre'] . '</td>'; // Mostrar el nombre del jugador
+
                     echo "</tr>";
                 }
 
                 echo "</tbody>";
                 echo "</table>";
             } else {
-                echo "No se encontraron jugadores favoritos"; // Mensaje si no se encuentran jugadores favoritos
+                echo "No se encontraron jugadores en la cesta"; // Mensaje si no se encuentran jugadores favoritos
             }
         } catch (PDOException $e) {
             echo "Error al ejecutar la consulta: " . $e->getMessage(); // Manejar errores de consulta
         }
     } else {
-        echo "No hay jugadores marcados como favoritos"; // Mensaje si no hay jugadores marcados como favoritos
+        echo "No hay jugadores marcados en la cesta"; // Mensaje si no hay jugadores marcados como favoritos
     }
 } else {
-    echo "No hay jugadores marcados como favoritos"; // Mensaje si la cookie de favoritos no existe
+    echo "No hay jugadores marcados en la cesta"; // Mensaje si la cookie de favoritos no existe
 }
 
 
@@ -218,11 +222,11 @@ if (isset($_COOKIE['favoritos'])) {
     // ... Tu código para mostrar la lista de favoritos ...
 
     echo "<form method='post' action='../Controladores/Controlador_EliminarFavoritos.php'>";
-    echo "<input type='submit' name='eliminar_favoritos' value='Eliminar Todos los Favoritos' class='btn btn-danger'>";
+    echo "<input type='submit' name='eliminar_favoritos' value='Eliminar Jugadores de la cesta' class='btn btn-danger'>";
 
     echo "</form>";
     ?>
-    <a href="../index.php" class="btn btn-Warning">Volver</a>
+    <a href="../index.php">Volver</a>
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
